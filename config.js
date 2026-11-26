@@ -1,0 +1,3 @@
+// Public browser configuration only. Replace placeholders with your Supabase project values.
+window.SCHOOL_CONFIG={SUPABASE_URL:'https://YOUR-PROJECT.supabase.co',SUPABASE_ANON_KEY:'YOUR_SUPABASE_ANON_KEY',ONESIGNAL_APP_ID:'YOUR_ONESIGNAL_APP_ID'};
+window.schoolSupabase=()=>{const c=window.SCHOOL_CONFIG;if(!window.supabase||c.SUPABASE_URL.includes('YOUR-')||c.SUPABASE_ANON_KEY.includes('YOUR_'))return null;return window.supabase.createClient(c.SUPABASE_URL,c.SUPABASE_ANON_KEY)};
