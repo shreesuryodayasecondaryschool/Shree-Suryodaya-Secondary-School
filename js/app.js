@@ -1,10 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const year = document.querySelectorAll(".current-year");
 
-  year.forEach(element => {
-    element.textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+  // Automatically update copyright year
+  const currentYear = new Date().getFullYear();
+
+  document.querySelectorAll("#year, .current-year").forEach(element => {
+    element.textContent = currentYear;
   });
 
+  // School name
+  if (typeof SCHOOL_NAME !== "undefined") {
+    document.querySelectorAll("[data-school-name]").forEach(element => {
+      element.textContent = SCHOOL_NAME;
+    });
+  }
+
+  // Mobile navigation
   const menu = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".nav-links");
 
@@ -13,8 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
       navigation.classList.toggle("active");
     });
   }
-
-  document.querySelectorAll("[data-school-name]").forEach(element => {
-    element.textContent = SCHOOL_NAME;
-  });
 });
