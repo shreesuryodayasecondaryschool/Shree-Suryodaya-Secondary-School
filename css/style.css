@@ -1,159 +1,324 @@
 
-/* ===== SHREE SURYODAYA NEW HOMEPAGE DESIGN ===== */
+/* =========================================
+   SHREE SURYODAYA SECONDARY SCHOOL
+   Premium Navy • White • Gold Design
+========================================= */
 
-.top {
-  background: #123f78;
-  color: white;
-  padding: 9px 5%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
+:root {
+  --navy: #102b50;
+  --navy-dark: #091d38;
+  --blue: #1c5590;
+  --blue-light: #eaf2fb;
+  --gold: #e5b64c;
+  --white: #ffffff;
+  --text: #26364b;
+  --muted: #68788d;
+  --border: #e1e8f0;
+  --shadow: 0 12px 35px rgba(16, 43, 80, 0.09);
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* TOP BAR */
+
+.top {
+  background: var(--navy-dark);
+  color: #e8eef7;
+  padding: 9px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+/* HEADER */
+
 .header {
-  position: relative;
-  padding: 18px 5%;
+  background: var(--white);
+  padding: 19px 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   flex-wrap: wrap;
-  gap: 15px;
+  border-bottom: 1px solid var(--border);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
-  color: #123f78;
+  gap: 15px;
+  color: var(--navy);
 }
 
 .brand h1 {
-  font-size: clamp(18px, 3vw, 27px);
+  font-size: clamp(17px, 2.5vw, 25px);
+  font-weight: 800;
   line-height: 1.3;
 }
 
 .brand p {
-  color: #1769aa;
-  font-style: italic;
+  color: var(--blue);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
 .seal {
-  width: 65px;
-  height: 65px;
-  border: 3px solid #d9a52d;
+  width: 66px;
+  height: 66px;
+  flex-shrink: 0;
+  border: 3px solid var(--gold);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-weight: bold;
-  color: #123f78;
-  background: #fff8e7;
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--navy);
+  background: #fffaf0;
+  box-shadow: inset 0 0 0 4px white;
 }
 
 .head-actions {
   display: flex;
+  align-items: center;
   gap: 10px;
   flex-wrap: wrap;
 }
 
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 19px;
+  background: var(--navy);
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px #102b5025;
+}
+
 .btn.light {
-  background: #eaf4ff;
-  color: #123f78;
+  background: var(--blue-light);
+  color: var(--navy);
+  border-color: #dce8f5;
+}
+
+.btn.light:hover {
+  background: #dceafa;
 }
 
 .btn.yellow {
-  background: #f2bd45;
-  color: #123f78;
-  margin-top: 15px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  margin-top: 12px;
 }
 
+.btn.yellow:hover {
+  background: #f0c968;
+}
+
+/* NAVIGATION */
+
 nav {
-  background: #123f78;
+  background: var(--navy);
   padding: 13px 5%;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 29px;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 5px 15px #091d3820;
 }
 
 nav a {
-  color: white;
-  font-weight: bold;
+  color: #f4f7fc;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.2s;
 }
 
 nav a:hover {
-  color: #f2bd45;
+  color: var(--gold);
 }
 
+/* HERO SECTION */
+
 .hero {
-  padding: 55px 5%;
-  min-height: 570px;
-  background: linear-gradient(120deg, #123f78, #287fc0);
+  position: relative;
+  overflow: hidden;
+  padding: 75px 7%;
+  min-height: 540px;
+  background:
+    radial-gradient(circle at 85% 15%, #ffffff18, transparent 28%),
+    linear-gradient(120deg, var(--navy-dark), #174d83 65%, #286c9f);
   display: grid;
-  grid-template-columns: 1.3fr 0.8fr;
+  grid-template-columns: 1.25fr 0.75fr;
   align-items: center;
-  gap: 35px;
+  gap: 55px;
   text-align: left;
 }
 
-.hero-content h2 {
-  font-size: clamp(35px, 5vw, 58px);
-  line-height: 1.12;
-  margin: 15px 0;
-  color: white;
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border: 1px solid #ffffff16;
+  border-radius: 50%;
+  right: -100px;
+  bottom: -210px;
+  pointer-events: none;
 }
 
-.hero-content p {
-  margin: 8px 0;
-  font-size: 17px;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
 }
 
 .eyebrow {
-  color: #f2bd45;
-  font-weight: bold;
-  letter-spacing: 2px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
 }
 
+.hero-content h2 {
+  font-size: clamp(36px, 5.2vw, 62px);
+  line-height: 1.12;
+  margin: 20px 0;
+  color: white;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.hero-content p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #e2eaf4;
+  max-width: 580px;
+}
+
+.hero-content .btn {
+  margin-top: 22px;
+  margin-right: 8px;
+}
+
+/* HERO WELCOME CARD */
+
 .login-preview {
+  position: relative;
+  z-index: 1;
   background: white;
-  color: #263449;
-  border-radius: 18px;
-  padding: 25px;
-  box-shadow: 0 15px 40px #092c5540;
+  color: var(--text);
+  border-radius: 17px;
+  padding: 32px;
+  box-shadow: 0 20px 55px #06182f55;
+  border: 1px solid #ffffff80;
 }
 
 .login-heading {
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .login-heading span {
-  font-size: 30px;
+  font-size: 38px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .login-heading h2 {
-  color: #123f78;
+  color: var(--navy);
   font-size: 22px;
+  line-height: 1.35;
 }
 
 .login-heading p {
-  color: #64748b;
+  color: var(--muted);
   font-size: 13px;
+  margin-top: 7px;
 }
+
+.school-welcome {
+  background: linear-gradient(145deg, #edf4fc, #f8fbff);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 18px;
+  text-align: center;
+}
+
+.school-welcome h3 {
+  color: var(--navy);
+  font-size: 21px;
+  margin-bottom: 9px;
+}
+
+.school-welcome p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* OLD LOGIN PAGE OPTIONS - PRESERVED */
 
 .login-option {
   display: block;
   text-align: center;
   padding: 12px;
-  border-radius: 9px;
+  border-radius: 8px;
   margin: 10px 0;
-  font-weight: bold;
-  border: 1px solid #dce6f1;
+  font-weight: 700;
+  border: 1px solid var(--border);
   transition: 0.2s;
 }
 
 .login-option:hover {
   transform: translateY(-2px);
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .google {
@@ -177,39 +342,55 @@ nav a:hover {
 }
 
 .guest {
-  color: #123f78;
-  background: #eaf4ff;
+  color: var(--navy);
+  background: var(--blue-light);
 }
 
 .login-note {
   font-size: 12px;
   text-align: center;
-  color: #64748b;
-  border-top: 1px solid #dce6f1;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
   padding-top: 12px;
   margin-top: 15px;
 }
 
+/* MAIN CONTENT */
+
+main {
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* QUICK ACCESS TILES */
+
 .tiles {
-  padding: 35px 5%;
+  padding: 48px 6%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
+  gap: 20px;
 }
 
 .tiles a {
   background: white;
-  border: 1px solid #dce6f1;
-  border-radius: 13px;
-  padding: 22px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 25px 15px;
   text-align: center;
-  box-shadow: 0 5px 20px #123f7810;
+  box-shadow: 0 5px 20px #102b5008;
+  transition: 0.25s ease;
+}
+
+.tiles a:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
 }
 
 .tiles a span {
   display: block;
-  font-size: 30px;
-  margin-bottom: 8px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 .tiles a b,
@@ -218,27 +399,34 @@ nav a:hover {
 }
 
 .tiles a b {
-  color: #123f78;
+  color: var(--navy);
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .tiles a small {
-  color: #64748b;
+  color: var(--muted);
+  font-size: 12px;
 }
 
+/* CONTENT COLUMNS */
+
 .columns {
-  padding: 20px 5%;
+  padding: 12px 6% 25px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  gap: 23px;
 }
+
+/* PANELS */
 
 .panel {
   background: white;
-  padding: 25px;
+  padding: 30px;
   border-radius: 13px;
-  border: 1px solid #dce6f1;
-  box-shadow: 0 5px 20px #123f7810;
-  margin: 15px 5%;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 20px #102b5008;
+  margin: 20px 6%;
 }
 
 .columns .panel {
@@ -246,60 +434,227 @@ nav a:hover {
 }
 
 .panel h2 {
-  color: #123f78;
-  margin-bottom: 12px;
+  color: var(--navy);
+  font-size: 22px;
+  margin-bottom: 15px;
+  padding-bottom: 11px;
+  border-bottom: 2px solid #f0d18a;
+}
+
+.panel p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.panel .btn {
+  margin-top: 13px;
 }
 
 .note {
-  color: #1769aa;
-  margin-top: 12px;
+  color: var(--blue) !important;
+  font-weight: 700;
+  margin-top: 15px !important;
 }
+
+/* FOOTER */
 
 body > footer {
-  margin-top: 35px;
+  margin-top: 45px;
+  padding: 30px 6%;
+  background: var(--navy-dark);
+  color: #e6edf6;
+  text-align: center;
+  font-size: 13px;
 }
 
-@media (max-width: 800px) {
+body > footer p {
+  margin: 5px 0;
+}
+
+body > footer a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+body > footer a:hover {
+  text-decoration: underline;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 40px 5%;
+    gap: 35px;
+    padding: 55px 6%;
+  }
+
+  .hero-content {
+    max-width: 750px;
+  }
+
+  .login-preview {
+    max-width: 560px;
+    width: 100%;
+    margin: auto;
   }
 
   .tiles {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .columns {
-    grid-template-columns: 1fr;
+  nav {
+    gap: 18px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .top {
+    flex-direction: column;
+    text-align: center;
+    gap: 3px;
+    font-size: 11px;
   }
 
   .header {
+    padding: 17px 4%;
     justify-content: center;
     text-align: center;
   }
 
   .brand {
     justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .top {
-    flex-direction: column;
-    text-align: center;
-    gap: 4px;
+    text-align: left;
   }
 
-  .tiles {
-    padding: 20px 4%;
-    gap: 10px;
+  .seal {
+    width: 54px;
+    height: 54px;
+    font-size: 13px;
   }
 
-  .login-preview {
-    padding: 17px;
+  .brand h1 {
+    font-size: 17px;
+  }
+
+  .brand p {
+    font-size: 11px;
+  }
+
+  .head-actions {
+    justify-content: center;
   }
 
   nav {
-    gap: 13px;
+    padding: 13px 4%;
+    gap: 12px 19px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 43px 5%;
+    min-height: auto;
+    gap: 30px;
+  }
+
+  .hero-content h2 {
+    font-size: clamp(35px, 10vw, 47px);
+    letter-spacing: -1px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-content .btn {
+    margin-top: 13px;
+  }
+
+  .login-preview {
+    padding: 21px 17px;
+  }
+
+  .tiles {
+    padding: 25px 4%;
+    gap: 12px;
+  }
+
+  .tiles a {
+    padding: 19px 9px;
+  }
+
+  .tiles a span {
+    font-size: 27px;
+  }
+
+  .tiles a b {
+    font-size: 13px;
+  }
+
+  .tiles a small {
+    font-size: 11px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+    padding: 10px 4%;
+    gap: 15px;
+  }
+
+  .panel,
+  .columns .panel {
+    margin: 13px 4%;
+    padding: 22px 18px;
+  }
+
+  .columns .panel {
+    margin: 0;
+  }
+
+  .panel h2 {
+    font-size: 19px;
+  }
+
+  body > footer {
+    margin-top: 30px;
+    padding: 25px 5%;
   }
 }
+
+/* SMALL PHONES */
+
+@media (max-width: 360px) {
+  .brand {
+    gap: 9px;
+  }
+
+  .brand h1 {
+    font-size: 15px;
+  }
+
+  .head-actions .btn {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .tiles {
+    grid-template-columns: 1fr 1fr;
+  }
+    }
+  
