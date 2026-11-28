@@ -4,55 +4,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>School Portal Login | Shree Suryodaya</title>
+
+  <title>School Portal Login | Shree Suryodaya Secondary School</title>
+
+  <meta name="description" content="Securely access the Shree Suryodaya Secondary School student and school portal.">
+
+  <meta name="theme-color" content="#102b50">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
+<body class="login-page">
+
+  <div class="top">
+    <span>📍 Masina, Rural Municipality-4, Rolpa, Nepal</span>
+    <span>Learn • Grow • Excel</span>
+  </div>
 
   <header class="header">
-    <div class="brand">
+    <a class="brand" href="index.html">
       <div class="seal">SSSS</div>
       <div>
         <h1>School Portal</h1>
         <p>Shree Suryodaya Secondary School</p>
       </div>
-    </div>
-    <a class="btn light" href="index.html">← Home</a>
+    </a>
+
+    <a class="btn light" href="index.html">← Back to Home</a>
   </header>
 
-  <main style="max-width:520px;margin:45px auto;padding:15px;">
-    <section class="login-preview">
-      <div class="login-heading">
-        <span>🔐</span>
-        <h2>Login to School Portal</h2>
-        <p>Choose your preferred login method</p>
+  <main style="max-width:1100px;margin:45px auto;padding:15px;">
+
+    <section class="login-layout">
+
+      <div class="login-intro">
+        <span class="eyebrow">WELCOME BACK</span>
+
+        <h2>Your School.<br>Your Learning.<br>Your Future.</h2>
+
+        <p>
+          Connect with your school community,
+          access learning resources and stay
+          updated with school activities.
+        </p>
+
+        <div class="login-benefits">
+          <div>🎓 Student learning portal</div>
+          <div>📢 School notices and updates</div>
+          <div>🎥 Photos, videos and resources</div>
+          <div>🤝 School community</div>
+        </div>
       </div>
 
-      <button class="login-option google" id="google-login" type="button">
-        🌐 Continue with Google
-      </button>
+      <section class="login-preview">
 
-      <button class="login-option facebook" id="facebook-login" type="button">
-        f &nbsp; Continue with Facebook
-      </button>
+        <div class="login-heading">
+          <span>🔐</span>
+          <h2>Login to School Portal</h2>
+          <p>Choose your preferred login method</p>
+        </div>
 
-      <button class="login-option tiktok" id="tiktok-login" type="button">
-        ♪ &nbsp; Continue with TikTok
-      </button>
+        <div class="login-methods">
 
-      <button class="login-option mobile" id="mobile-login" type="button">
-        📱 Login with Mobile Number + OTP
-      </button>
+          <button class="login-option google" id="google-login" type="button">
+            <span>🌐</span>
+            Continue with Google
+          </button>
 
-      <a class="login-option guest" href="index.html">
-        👤 Continue as Guest
-      </a>
+          <button class="login-option facebook" id="facebook-login" type="button">
+            <span>f</span>
+            Continue with Facebook
+          </button>
 
-      <p id="auth-message" class="login-note">
-        Guest can view public information.
-        Student records require an approved account.
-      </p>
+          <button class="login-option tiktok" id="tiktok-login" type="button">
+            <span>♪</span>
+            Continue with TikTok
+          </button>
+
+          <button class="login-option mobile" id="mobile-login" type="button">
+            <span>📱</span>
+            Login with Mobile Number + OTP
+          </button>
+
+          <a class="login-option guest" href="index.html">
+            <span>👤</span>
+            Continue as Guest
+          </a>
+
+        </div>
+
+        <p id="auth-message" class="login-note" role="status" aria-live="polite">
+          Guest access is available for public information.
+          Student records require an approved account.
+        </p>
+
+        <div class="login-security">
+          🔒 Your account access is protected by Supabase Authentication.
+        </div>
+
+      </section>
+
     </section>
+
+    <p class="login-bottom">
+      © <span id="year"></span> Shree Suryodaya Secondary School · Masina, Rolpa, Nepal
+    </p>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -62,55 +118,88 @@
   <script>
     const message = document.getElementById("auth-message");
 
+    function showMessage(text) {
+      message.textContent = text;
+    }
+
     document.getElementById("google-login").onclick = async () => {
+      showMessage("Connecting to Google...");
+
       try {
         await signInWithGoogle();
       } catch (error) {
-        message.textContent = error.message;
+        showMessage(error.message);
       }
     };
 
     document.getElementById("facebook-login").onclick = async () => {
+      showMessage("Connecting to Facebook...");
+
       try {
         const { error } = await supabaseClient.auth.signInWithOAuth({
           provider: "facebook"
         });
+
         if (error) throw error;
       } catch (error) {
-        message.textContent = error.message;
+        showMessage(error.message);
       }
     };
 
     document.getElementById("mobile-login").onclick = async () => {
-      const phone = prompt("Enter your mobile number with country code (e.g. +97798XXXXXXXX):");
+      const phone = prompt(
+        "Enter your mobile number with country code (e.g. +97798XXXXXXXX):"
+      );
+
       if (!phone) return;
 
       try {
+        showMessage("Sending OTP...");
+
         const { error } = await supabaseClient.auth.signInWithOtp({
           phone: phone.trim()
         });
+
         if (error) throw error;
 
         const otp = prompt("Enter the OTP sent to your mobile:");
-        if (!otp) return;
 
-        const { error: verifyError } = await supabaseClient.auth.verifyOtp({
-          phone: phone.trim(),
-          token: otp.trim(),
-          type: "sms"
-        });
+        if (!otp) {
+          showMessage("OTP verification cancelled.");
+          return;
+        }
+
+        showMessage("Verifying OTP...");
+
+        const { error: verifyError } =
+          await supabaseClient.auth.verifyOtp({
+            phone: phone.trim(),
+            token: otp.trim(),
+            type: "sms"
+          });
+
         if (verifyError) throw verifyError;
 
+        showMessage("Login successful. Redirecting...");
+
         window.location.href = "index.html";
+
       } catch (error) {
-        message.textContent = error.message;
+        showMessage(error.message);
       }
     };
 
     document.getElementById("tiktok-login").onclick = () => {
-      message.textContent =
-        "TikTok login needs a separately configured OAuth provider. Setup is pending.";
+      showMessage(
+        "TikTok login is not active yet. It requires a separately configured OAuth provider."
+      );
     };
+
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
   </script>
 
 </body>
