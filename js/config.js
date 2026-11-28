@@ -1,7 +1,7 @@
 
 const SUPABASE_URL = "https://txnkspvsolnsduqgbpgl.supabase.co";
 
-const SUPABASE_ANON_KEY = "PASTE_YOUR_SB_PUBLISHABLE_KEY_HERE";
+const SUPABASE_ANON_KEY = "sb_publishable_caE6d1pQSHfq3Ox0VmNALA_LeMxaCse";
 
 const SCHOOL_NAME = "Shree Suryodaya Secondary School";
 
